@@ -1,0 +1,1 @@
+Welcome! This is the repository for my Twitter Bot. It is my current project so there isn't much documentation yet. Hopefully will finish within a week!.
