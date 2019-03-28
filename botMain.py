@@ -11,6 +11,11 @@ This bot can
 @author: Raymond Chin
 """
 
+"""
+runs through terminal but have to update the code with correct s
+
+"""
+
 import tweepy
 
 
@@ -41,7 +46,7 @@ def followBack():
 def mainFunction():
     search = "Aimi" #This is the keyword you'll be searching for
     
-    numberOfTweets = 200
+    numberOfTweets = 2
     #This is the number of tweets you wish to interact with
     
     for tweet in tweepy.Cursor(api.search,search).items(numberOfTweets):
@@ -54,6 +59,24 @@ def mainFunction():
             
         except StopIteration:
             break
+        
+    
+    phrase = "<3" #What your response tweet will be
+    
+    for tweet in tweepy.Cursor(api.search,search).items(numberOfTweets):
+        try:
+            tweetId = tweet.user.id
+            username = tweet.user.screen_name
+            api.update_status("@"+username + " " + phrase,in_reply_to_status_id = tweetId)
+            print("Replied with " + phrase + " to " +username)
+            
+        except tweepy.TweepError as e:
+            print(e.reason)
+            
+        except StopIteration:
+            break
+            
+            
         
         
 mainFunction()
