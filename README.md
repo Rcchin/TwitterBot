@@ -10,7 +10,9 @@ and paste those values into the program. Once done the program will work.
 ##More Info
 Tweepy is an API class that provides access to Twitter's RESTful API methods. Tweepy create model class instances that 
 contains the data returned from Twitter's RESTful API. We can then use these inside our program. An example of a model
-is our user = api.me()
+is our user = api.me(). Although the bot has it's functionality working to make it more user friendly I should add a GUI
+or at least a way to edit the search, keyword, number of tweets etc. through command line. Currently have to edit the 
+code to get it what you want to do exactly. Still a WIP.
 
 
 ##Built With
