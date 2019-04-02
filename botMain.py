@@ -19,7 +19,10 @@ runs through terminal but have to update the code with correct s
 import tweepy
 
 
-
+""" 
+Must link your Twitter account to our bot. Must create a Twitter Application and generate a Consumer Key,
+Consumer Secret, Access Token, and Access Token Secret.
+"""
 consumer_key = ''
 consumer_secret = ''
 access_token = ''
@@ -36,14 +39,20 @@ user = api.me()
 print(user.name)
 """
 
+"""
+followBack makes sure to follow all your current followers
+"""
 def followBack():
     user = api.me()
     for follower in tweepy.Cursor(api.followers).items():
         follower.follow()
         print ("Followed everyone that is following " + user.name)
     
+"""
+searches Twitter for keyword and reTweets or favorites based on that keyword
+"""
 
-def mainFunction():
+def reTweetFavorite():
     search = "Aimi" #This is the keyword you'll be searching for
     
     numberOfTweets = 2
@@ -59,14 +68,21 @@ def mainFunction():
             
         except StopIteration:
             break
+"""
+Replies to Tweets based on keyword
+
+"""
         
-    
+def reply():
+    search ="Bang Dream Aimi"
+    numberOfTweets = 2
     phrase = "<3" #What your response tweet will be
     
     for tweet in tweepy.Cursor(api.search,search).items(numberOfTweets):
         try:
-            tweetId = tweet.user.id
-            username = tweet.user.screen_name
+            
+            tweetId = tweet.user.id #id of tweet you're responding to 
+            username = tweet.user.screen_name#user's username you're responding too.
             api.update_status("@"+username + " " + phrase,in_reply_to_status_id = tweetId)
             print("Replied with " + phrase + " to " +username)
             
@@ -79,4 +95,3 @@ def mainFunction():
             
         
         
-mainFunction()
